@@ -4,6 +4,8 @@ import './App.css';
 import { auth, storage } from './firebase'
 import Login from './Login'
 import Message from './Message'
+import UploadFile from './UploadFile'
+import UserAudioFiles from './UserAudioFiles'
 
 class App extends Component {
   constructor(props) {
@@ -31,12 +33,16 @@ class App extends Component {
         <Login 
           user={user}
         />
-        <p className="App-intro">
-          { user
-            ? "User is signed in"
-            : "No user, =("
-          }
-        </p>
+        { user &&
+          <div>
+            <UploadFile
+              uid={user.uid}
+            />
+            <UserAudioFiles
+              uid={user.uid}
+            />
+          </div>
+        }
       </div>
     );
   }

@@ -4,8 +4,14 @@
   "private": true,
   "dependencies": {
     "firebase": "^3.7.4",
+    "i": "^0.3.5",
+    "npm": "^4.4.4",
+    "ramda": "^0.23.0",
     "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react-dom": "^15.4.2",
+    "react-file-input": "^0.2.5",
+    "react-player": "^0.14.3",
+    "uuid": "^3.0.1"
   },
   "devDependencies": {
     "react-scripts": "0.9.5"
