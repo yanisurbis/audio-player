@@ -32,10 +32,10 @@ class UploadFile extends Component {
                     name: fileName,
                     uid: fileUID,
                     path: fullPath,
-                    startPlayFrom: 0,
+                    played: 0,
                     url: downloadURL,
                   })
-                  
+
     })
   }
 

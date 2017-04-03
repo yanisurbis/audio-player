@@ -1,13 +1,9 @@
-import React, { Component, PropTypes as pt } from 'react';
+import React, { PureComponent, PropTypes as pt } from 'react';
 import { database } from './firebase'
 import R from 'ramda'
-import ReactPlayer from 'react-player'
+import Audio from './Audio'
 
-class UserAudioFiles extends Component {
-  static propTypes = {
-    uis: pt.String
-  }
-
+class UserAudioFiles extends PureComponent {
   state = {
     songs: null
   }
@@ -22,16 +18,26 @@ class UserAudioFiles extends Component {
     this.userAudioFilesRef.on('value', snapshot => {
       const songs = []
       
-      const snapshotVal = snapshot.val()
-      const keys = Object.keys(snapshotVal)
-      keys.forEach(key => songs.push(snapshotVal[key]))
+      const songsObject = snapshot.val()
+      const keys = Object.keys(songsObject)
+      keys.forEach(key => songs.push(songsObject[key]))
 
       this.setState({ songs })
     })
   }
 
+  sendPlayedTime(uid, played) {
+    const wait = this.wait
+    if (!wait) {
+      // console.log("sending")
+      const fileRef = this.userAudioFilesRef.child(uid)
+      fileRef.child('played').set(played)
+      this.wait = setTimeout(() => this.wait = null, 4000)
+    }
+  }
+
   renderSong = song => {
-    const { name, url, uid } = song
+    const { name, url, uid, played } = song
     const playlist = [
       { url,
         displayText: name
@@ -40,7 +46,11 @@ class UserAudioFiles extends Component {
     return (
       <div key={uid}>
         <p>{name}</p>
-        <ReactPlayer url={url} controls height={20} />
+        <Audio
+          url={url}
+          played={played}
+          sendPlayedTime={played => this.sendPlayedTime(uid, played)}
+        />
       </div>
     )
   }
