@@ -1,4 +1,7 @@
 import React, { Component, PropTypes as pt } from 'react';
+import play from './play-button.svg';
+import Player from './Player'
+import './Audio.css'
 
 export default class Audio extends Component {
 
@@ -21,15 +24,19 @@ export default class Audio extends Component {
   render () {
     const { url } = this.props
     return (
-      <audio
-        ref={audio => this.audio = audio}
-        controls
-        className="player"
-        preload="false"
-        onTimeUpdate={this.onTimeUpdate}
-      >
-        <source src={url} />
-      </audio>
+      <div>
+        <audio
+          className=""
+          ref={audio => this.audio = audio}
+          controls
+          preload="false"
+          onTimeUpdate={this.onTimeUpdate}
+        >
+          <source src={url} />
+        </audio>
+
+      </div>
+      
     )
   }
 }

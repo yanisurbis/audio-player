@@ -24,28 +24,16 @@ class App extends Component {
   render() {
     const { user } = this.state
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
+      <div className="app">
         <Message user={user} />
-        <Login 
-          user={user}
-        />
-        { user &&
-          <div>
-            <UploadFile
-              uid={user.uid}
-            />
-            <UserAudioFiles
-              uid={user.uid}
-            />
-          </div>
-        }
+        <Login user={user} />
+        { user && <UploadFile uid={user.uid} />}
+        { user && <UserAudioFiles uid={user.uid}/>}
       </div>
     );
   }
 }
+
+// TODO: hidden progress bar if we are not uploading
 
 export default App;

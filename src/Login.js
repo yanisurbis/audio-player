@@ -1,5 +1,6 @@
 import React, { Component, PropTypes as pt } from 'react'
 import { auth, googleAuthProvider } from './firebase'
+import './Button.css'
 
 class Login extends Component {
 
@@ -21,12 +22,12 @@ class Login extends Component {
             <div>
             { user 
                 ? (
-                    <button onClick={this.logOut}>
+                    <button className="warn" onClick={this.logOut}>
                         Log Out
                     </button>
                 )
                 : (
-                    <button onClick={this.loginWithGoogle}>
+                    <button className="" onClick={this.loginWithGoogle}>
                         Log In
                     </button>
                 )

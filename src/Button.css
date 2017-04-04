@@ -1,0 +1,15 @@
+button {
+  background-color: #357EDD;
+  font-size: 2rem;
+  font-family: 'Palanquin Dark', sans-serif;
+  padding: 0.65rem 1.3rem;
+  border: 2px solid black;
+  line-height: 1;
+  /*border-radius: 10px;*/
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.warn {
+  background-color: #00A279;
+}

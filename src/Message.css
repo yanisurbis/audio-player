@@ -1,0 +1,12 @@
+.message {
+  font-family: 'Palanquin Dark', sans-serif;
+}
+
+.message__text {
+  font-size: 4rem;
+  margin: 2rem 0;
+}
+
+.message__username {
+  text-decoration: underline;
+}

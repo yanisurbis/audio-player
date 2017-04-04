@@ -2,6 +2,7 @@ import React, { PureComponent, PropTypes as pt } from 'react';
 import { database } from './firebase'
 import R from 'ramda'
 import Audio from './Audio'
+import Player from './Player.css'
 
 class UserAudioFiles extends PureComponent {
   state = {
@@ -45,7 +46,7 @@ class UserAudioFiles extends PureComponent {
     ]
     return (
       <div key={uid}>
-        <p>{name}</p>
+        <p className="songname">{name.replace(/.mp3/gi, '')}</p>
         <Audio
           url={url}
           played={played}
@@ -58,9 +59,7 @@ class UserAudioFiles extends PureComponent {
   render() {
     return (
       <div>
-        <ul>
-          { this.state.songs && R.map(this.renderSong, this.state.songs)}
-        </ul>
+        { this.state.songs && R.map(this.renderSong, this.state.songs)}
       </div>
     );
   }
